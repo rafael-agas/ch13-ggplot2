@@ -1,0 +1,43 @@
+---
+title: "Participation"
+author: "Rafael Agas"
+date: "April 30, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source("exercise.r")
+```
+
+#PLOT 1
+```{r echo = FALSE}
+ggplot(diamond_sample) +
+  geom_point(mapping = aes(x = price, y = carat, color = cut), alpha = 0.3) +
+  geom_smooth(mapping = aes(x = price, y = carat, color = cut), se = FALSE)
+```
+
+#PLOT 2
+```{r echo = FALSE}
+ggplot(data = clarity_summary, mapping = aes(x = clarity, y = mean)) +
+  geom_bar(mapping = aes(fill = clarity), stat = "identity") +
+  geom_errorbar(mapping = aes(ymin = (mean-se), ymax = (mean+se)))
+```
+
+#PLOT 3
+```{r echo = FALSE}
+ggplot(diamond_sample) +
+  geom_bar(mapping = aes(x = depth, fill = clarity))
+```
+#PLOT 4
+```{r echo = FALSE}
+ggplot(diamond_sample) + 
+  geom_point(mapping = aes(x = cut, y = carat, size = price, color = price))
+```
+#PLOT 5
+```{r echo = FALSE}
+ggplot(diamonds) +
+  geom_point(mapping =
+               aes(x = carat, y =
+                     price, color = clarity))
+```
